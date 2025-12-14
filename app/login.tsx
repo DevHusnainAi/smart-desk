@@ -6,16 +6,28 @@ import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { ThemedView } from "@/components/themed-view";
+import { useToast } from "@/context/toast-context";
 
 export default function LoginScreen() {
   const router = useRouter();
+  const { showToast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isFocused, setIsFocused] = useState<string | null>(null);
 
   const handleLogin = () => {
-    // Navigate to main app
-    router.replace("/(tabs)");
+    if (!email || !password) {
+      showToast("Please enter email and password", "error");
+      return;
+    }
+
+    // Simulate login success
+    showToast("Welcome back, Sebastian!", "success");
+
+    // Navigate to main app after short delay
+    setTimeout(() => {
+      router.replace("/(tabs)");
+    }, 500);
   };
 
   return (

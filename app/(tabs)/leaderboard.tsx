@@ -50,7 +50,10 @@ export default function LeaderboardScreen() {
             Leaderboard
           </Text>
           <View className="flex-row gap-3">
-            <TouchableOpacity className="w-10 h-10 items-center justify-center">
+            <TouchableOpacity
+              className="w-10 h-10 items-center justify-center"
+              onPress={() => router.push("/scanner")}
+            >
               <MaterialIcons name="qr-code-scanner" size={24} color="#0f172a" />
             </TouchableOpacity>
             <TouchableOpacity
